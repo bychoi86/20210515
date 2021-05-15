@@ -243,3 +243,49 @@
         </div>
     </body>
 </html>
+<script>
+    var foo = {
+        name : 'foo',
+        age   : 30,
+        array : [1,4,5,5],
+        run : function(){
+            return this.name;
+        },
+    };
+    console.log(foo.name);
+    console.log(foo["age"]);
+
+    foo.gender="man";
+    console.log(foo.gender);
+
+    foo.name = "bar";
+    console.log(foo.name);
+
+    var dog = {
+        name : "Fido",
+        weight : 30,
+        breed : "Mixed",
+        loves : ["walks", "fetching balls"],
+    };
+    console.log(dog.name);
+    console.log(dog["weight"]);
+    console.log(dog.breed);
+    console.log(dog.loves);
+
+    var test = {
+        name : "Nature of Code",
+        price : 30000,
+        book : "다니엘",
+        ISBN : 9788968481901,
+        page : "620페이지"
+    };
+    console.log(test.name);
+    console.log(test["price"]);
+    console.log(test.book);
+    console.log(test.ISBN);
+    console.log(test.page);
+
+
+
+
+</script>
