@@ -1,0 +1,27 @@
+cbyciel@gmail.com
+
+컴퍼넌트 = 부품
+부품을 공장에서 만듬
+
+인스턴스 : 컴퍼넌트를 합치는 목적
+
+13-5
+V-for 다음에는 in 뒤에있는 arr만 사용 
+
+
+■변경
+this.$data.arr[0] = 100;
+→ this.$set(this.$data.arr, 0 , 100);
+
+this.$data.arr = arr_copy;
+→ this.$set(this.$data, "arr", arr_copy);
+
+■삭제
+splice(0, 2) : 0에서부터 2개를 삭제
+
+
+
+
+
+
+event.target.href
