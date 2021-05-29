@@ -104,19 +104,19 @@
             span에 mouseout 이벤트 핸들러를 작성하시오.  ==> spanmouseout.  background-color를 red로 설정
         </xmp>
             <span v-on:mouseover="spanmouseover"
-                v-on:mousedown="spanmousedown"
-                v-on:mouseup="spanmouseup"
-                v-on:mouseout="spanmouseout">
+                     v-on:mousedown="spanmousedown"
+                     v-on:mouseup="spanmouseup"
+                     v-on:mouseout="spanmouseout">
             </span>
             <span v-on:mouseover="spanmouseover"
-                v-on:mousedown="spanmousedown"
-                v-on:mouseup="spanmouseup"
-                v-on:mouseout="spanmouseout">
+                     v-on:mousedown="spanmousedown"
+                     v-on:mouseup="spanmouseup"
+                     v-on:mouseout="spanmouseout">
             </span>
             <span v-on:mouseover="spanmouseover"
-                v-on:mousedown="spanmousedown"
-                v-on:mouseup="spanmouseup"
-                v-on:mouseout="spanmouseout">
+                     v-on:mousedown="spanmousedown"
+                     v-on:mouseup="spanmouseup"
+                     v-on:mouseout="spanmouseout">
             </span>
             <hr />
             <xmp>
@@ -128,14 +128,14 @@
 
         </xmp>
             <select id="sel"
-                change="selectchange">
+                v-on:change="selectchange">
                 <option value="../images/strawberry.gif">딸기</option>
                 <option value="../images/banana.gif">바나나</option>
                 <option value="../images/apple.gif"
                     selected>사과</option>
             </select>
             <img id="img"
-                src="img_select" />
+                v-bind:src="img_select" />
             <hr />
             <xmp>
             input 태그에 focus, blur 효과 넣기
@@ -160,6 +160,9 @@
         el: "#app",
         data: {
             img_image3: null,
+            img_but1: "../images/but1.gif " ,
+            img_swap: "../images/img_swap_off.png",
+
 
         },
 
@@ -168,21 +171,33 @@
             //문제1번
             imageclick: function (event) {
                 console.log(event.target.href);
+
+                // <a href=../images/image3.jpg"/>에서 href 속성을 가져오려면 ===> event.target.href
+                //this.$data.img_image3 = event.target.href;
                 this.$set(this.$data, "img_image3", event.target.href)
-                event.preventDefault();
-                event.stopPropagation();
+
+                //문제점. a태그의 redirect 발생.
+                //어떻게 redirect 막을수 있는가 ==>이벤트 취소 이용.
+                event.preventDefault();  //버블링 막기
+                event.stopPropagation(); //
             },
 
             //문제2번
             imageover:function(event){
-                event.target.src = "../images/but2.gif"
-                if (this.$set.id === "but1") {
-                    event.target.src = "../images/but2.gif"
-                } else {
-                    event.target.src = "/images/img_swap_on.png"
 
+                // <img src = "img_but1" id="but1"에서 어떻게 id값을 얻을 수 있을까  ===> event.target.id
+                //event.target.src = "../images/but2.gif"
+                // if (this.$set.id === "but1") {
+                //     event.target.src = "../images/but2.gif"
+                // } else {
+                //     event.target.src = "/images/img_swap_on.png"
+
+                // }
+                if (event.target.id === "but1") {
+                    this.$data.img_but1 = "../images/but2.gif" ;
+                } else if (event.target.id === "img_swap" ) {
+                    this.$data.img_swap = "../images/img_swap_on.png" ;
                 }
-
 
 
             },
@@ -193,7 +208,14 @@
 
             //문제3번
             spanmouseover: function (event) {
-                event.target.style.backgroundColor = "yellow"
+                // <span style = "background-color: yellow">
+                // event.taget.style = "background-color: yellow";
+                event.target.style.backgroundColor = "yellow" ;
+                event.target.style = {
+                    //"background-color: yellow"
+                    "background-color" : "yellow",
+                    backgroundColor: "yellow",
+                }
             },
             spanmousedown: function (event) {
                 event.target.style.backgroundColor = "blue"
@@ -203,6 +225,13 @@
             },
             spanmouseout: function (event) {
                 event.target.style.backgroundColor = "red"
+            },
+
+            //문제4번
+            selectchange: function (event) {
+               //selected 값을 가져오고 싶은데 어떻게? ===> event.target.value;
+               this.$data.img_select = "event.target.value";
+
             }
 
         },

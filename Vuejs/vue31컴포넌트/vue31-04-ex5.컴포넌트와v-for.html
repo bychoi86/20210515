@@ -1,15 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vue Template - Directives</title>
-
-</head>
-
-<body>
-    <xmp>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+            content="width=device-width, initial-scale=1.0">
+        <title>Vue Template - Directives</title>
+    </head>
+    <body>
+        <xmp>
         Vue.js v-for 지시자와 props 를 사용방법에 대해서 학습한다.
 
         단순 배열을 바인딩하는 방법 학습
@@ -36,24 +34,92 @@
         2. "vue13-05.인스턴스data속성변경set" 예제
 
     </xmp>
-    <hr>
-
-    <h2>컴포넌트와 반복 지시자</h2>
-    <div id="app">
-        <p>
-            <button v-on:click="clickAddBox">박스 추가</button>
-        </p>
-        <p>
-            <b v-for="(val, i) in arr" v-bind:key="i">
-                {{val}}
-                <component-box v-bind:num="val"></component-box>
-            </b>
-        </p>
-    </div>
-    <hr>
-
-</body>
-
+        <hr>
+        <h2>컴포넌트와 반복 지시자</h2>
+        <div id="app">
+            <p>
+                <button v-on:click="clickAddBox">박스 추가</button>
+            </p>
+            <p>
+                <b v-for="(val, i) in arr"
+                    v-bind:key="i"> {{val}}
+                    <component-box v-bind:num="val"></component-box>
+                </b>
+            </p>
+        </div>
+        <hr>
+    </body>
 </html>
-
 <!-- vue 플러그인 임포트   -->
+<!-- vue 플러그인 임포트   -->
+<script src="https://unpkg.com/vue@2.5.16/dist/vue.js">/* vue 플러그인 임포트 */</script>
+<script src="https://unpkg.com/vuex@3.3.0/dist/vuex.js"> /* vuex 플러그인 임포트 */</script>
+<script src="https://unpkg.com/vue-router@3.1.6/dist/vue-router.js"> /* vue 라우터 플러그인 임포트 */</script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"> /* axios 플러그인 임포트 */</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"> /* jQuery 플러그인 임포트 */</script>
+<script>
+
+
+    //지역 컴포넌트
+    var localComponent = {
+        /* pdtmc^2w */
+        props: [
+            "num"
+        ],
+        data: function () {
+            return {
+
+            }
+        },
+        template: `
+            <span style = "display : inline-block;
+            font-size:3em; border:1px dashed blue; padding:10px 20px; margin:5px; text-align:center;">
+            {{num}}
+            </span>
+    `,
+        methods: {
+
+        },
+        components: {
+            /* 컴포넌트 등록. 예시) "태그명" : 컴포넌트명 */
+
+        },
+        computed: {
+            /* 자동처리 + 동기식. 메서드로 작성. return 필수. */
+
+        },
+        watch: {
+            /* 자동처리 + 비동기식. data 에 등록된 프로퍼티 모니터링. 메서드로 작성. 매개변수 입력 필수  */
+
+        },
+        mounted: function () {
+            console.log("mounted");
+        },
+        updated: function () {
+            console.log("updated");
+        },
+    };
+
+
+    new Vue({
+        /* edtmc^2w */
+        el: "#app",
+        data: {
+            arr: [ 0, 1, 2, 3, 4, 5 ]
+        },
+        //template: ``,
+        methods: {
+            clickAddBox: function (event) {
+                var arr_copy = [...$data.arr. this.$data.arr.length + 1]
+                this.$set(this.$data, "this.$data.arr.length", 100);
+
+            }
+        },
+        components: {
+            /* 컴포넌트 등록. 예시) "태그명" : 컴포넌트명 */
+            "component-box" : localComponent
+
+        },
+    });
+
+</script>
