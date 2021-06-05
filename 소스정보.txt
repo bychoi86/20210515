@@ -1,0 +1,44 @@
+■ 스토어 완성 틀
+
+    var store = new Vuex.Store({
+        actions : {
+             increment : function ( mutations, param ){
+                //this.$data.counter = this.$data.counter +1 ;
+                mutations.commit( "increment", param )
+            },
+            decrement : function( mutations, param2 ){
+                //this.$data.counter = this.$data.counter -1 ;
+                mutations.commit ("decrement", param2 )
+            },
+
+        },
+        mutations : {
+            increment : function ( state, param ){
+            //     this.$data.counter = this.$data.counter +1 ;
+                    state.counter = state.counter + param;
+            },
+            decrement : function( state, param2 ){
+                //this.$data.counter = this.$data.counter -1 ;
+                state.counter = state.counter + param2;
+            },
+        },
+        state : {
+            welcome : "HELLO WORLD" ,
+            counter : 0,
+
+        },
+        getters : {
+            /*
+            watch 와 비슷.
+            state 변경을 모니터링
+            */
+            welcome : function (state) {
+                return state.welcome;
+            },
+            counter : function (state) {
+                return state.counter;
+            },
+
+        },
+
+    });

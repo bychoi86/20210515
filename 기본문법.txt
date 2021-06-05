@@ -1,0 +1,39 @@
+Vuex = Store : 컴포넌트에서 가져갈수있음
+
+
+■ 문자 추가
+data: {
+            header : "Vuex 사용 앱",
+            welcome : "HELLO WORLD" ,
+            counter : 0,
+        },
+
+
+■ 버튼 클릭 시 1씩 플러스, 마이너스
+        methods: {
+            increment : function (){
+                this.$data.counter = this.$data.counter +1 ;
+            },
+            decrement : function(){
+                this.$data.counter = this.$data.counter -1 ;
+            },
+        },
+
+
+
+■ 스토어 기본 틀
+    var store = new Vuex.Store({
+        actions : {
+
+        },
+        mutations : {
+
+        },
+        state : {
+
+        },
+        getters : {
+
+        },
+        
+    });
