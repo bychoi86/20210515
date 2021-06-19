@@ -1,0 +1,33 @@
+JSX : Java Script Xml
+
+xml : 열었으니 닫아라
+html: 열었으니 닫아줄래?
+
+&&연산자: 어드레스 연산자라고 말함
+
+Eslint : 행동대장
+Prettier: 설계자
+
+React page 115만 하면 됨
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
